@@ -4,7 +4,7 @@ import logo from '../../images/logo.png';
 import useStyle from './styles';
 
 
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
     const classes = useStyle();
     return (
         <AppBar position="fixed" className={classes.appBar} color="inherit">
@@ -16,7 +16,7 @@ const Navbar = () => {
                 <div className={classes.grow}></div>
                 <div className={classes.button}>
                     <IconButton aria-label="Show cart items" color="inherit">
-                        <Badge badgeContent={5} color="secondary">
+                        <Badge badgeContent={ totalItems } color="secondary">
                             <ShoppingCart />
                         </Badge>
                     </IconButton>
