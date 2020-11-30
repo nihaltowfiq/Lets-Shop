@@ -1,26 +1,24 @@
 import { Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons';
-import React from 'react';
-
 import useStyles from './styles';
 
-const Product = ({product}) => {
+
+const Product = ({ product }) => {
     const classes = useStyles();
+    console.log(product);
     return (
         <Card className={classes.root}>
-            <CardMedia className={classes.media} image="https://cdn.chec.io/merchants/19661/assets/tv2wubQUhhbW1qAl|Screenshot 2020-11-25 at 10.56.41.png" title={Product.name}></CardMedia>
+            <CardMedia className={classes.media} image={product.media.source} title={Product.name}></CardMedia>
             <CardContent>
                 <div className={classes.cardContent}>
                     <Typography variant="h5" gutterBottom>
                         {product.name}
                     </Typography>
                     <Typography variant="h5">
-                        {product.price}
+                        {product.price.formatted_with_symbol}
                     </Typography>
                 </div>
-                <Typography variant="body2" color="textSecondary">
-                    {product.description}
-                </Typography>
+                <Typography dangerouslySetInnerHTML={{ __html: product.description }} variant="body2" color="textSecondary" />
             </CardContent>
             <CardActions disableSpacing className={classes.CardActions}>
                 <IconButton aria-label="Add to Cart">
